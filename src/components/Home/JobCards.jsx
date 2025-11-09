@@ -20,7 +20,7 @@ const JobCards = () => {
     if (isLoading) return <p className="text-center">Loading...</p>;
   if (isError) return <p className="text-center text-red-500">Failed to load jobs.</p>;
 
-console.log(jobs);
+// console.log(jobs);
 
 
     return (
