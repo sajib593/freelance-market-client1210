@@ -1,9 +1,17 @@
+import Banner from "./Banner";
+import JobCards from "./JobCards";
 
 
 const Home = () => {
     return (
         <div>
-            <h1>tjidi is home abbay</h1>
+            <br /><br />
+
+            <Banner></Banner>
+
+            <br /><br />
+
+            <JobCards></JobCards>
         </div>
     );
 };
