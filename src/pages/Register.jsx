@@ -1,7 +1,9 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import Navbar from "../components/Navbar";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Register = () => {
