@@ -5,7 +5,7 @@ import useAxios from "../hooks/useAxios";
 
 const ViewDetails = () => {
 
-    let [view, setView] = useState()
+    let [view, setView] = useState("")
 
     let {id} = useParams();
     console.log(id);

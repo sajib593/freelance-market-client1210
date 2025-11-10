@@ -6,6 +6,9 @@ import AddJob from "../pages/AddJob";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import ViewDetails from "../pages/ViewDetails";
+import JobsUpdate from "../pages/JobsUpdate";
+
+
 
 
 
@@ -50,7 +53,12 @@ const router = createBrowserRouter([
   {
     path: '/viewDetails/:id',
     element: <ViewDetails></ViewDetails>
+  },
+  {
+    path: '/jobsUpdate',
+    element: <JobsUpdate></JobsUpdate>
   }
+ 
 ]);
 
 
