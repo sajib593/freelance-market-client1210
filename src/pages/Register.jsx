@@ -150,9 +150,7 @@ const Register = () => {
         <br /><br />
 
 
-        <Footer>
-
-        </Footer>
+        {/* <Footer>   </Footer> */}
 
         </>
     );
