@@ -1,7 +1,16 @@
+import { useContext } from "react";
 import Navbar from "../components/Navbar";
+import { AuthContext } from "../Provider/AuthProvider";
+import useAxios from "../hooks/useAxios";
+import Swal from "sweetalert2";
 
 
 const AddJob = () => {
+
+  let {user} = useContext(AuthContext);
+
+  let axiosInstance = useAxios()
+  // console.log(axiosInstance);
 
 
   const handleCreateJob = async (e) => {
@@ -12,8 +21,8 @@ const AddJob = () => {
     const category = form.category.value;
     const summary = form.summary.value;
     const coverImage = form.coverImage.value;
-    // const postedBy = user?.displayName || "Anonymous";
-    // const userEmail = user?.email || "unknown@email.com";
+    const postedBy = user?.displayName || "Anonymous";
+    const userEmail = user?.email || "unknown@email.com";
     const postedDate = new Date().toISOString();
 
     const newJob = {
@@ -26,13 +35,42 @@ const AddJob = () => {
       postedDate,
     };
 
-
+    console.log(newJob);
 
     // axiosSecure.post('/products', newProduct)
     // .then((data) => {
     //     console.log('after secure call',data.data);
     // })
     
+
+    axiosInstance.post('/allJobs', newJob)
+    .then(data =>{
+        console.log('add new job', data.data);
+
+
+
+          if (data.data.insertedId) {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Job added successfully 🎉',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    Swal.fire({
+      title: 'Error!',
+      text: 'Failed to add job. Please try again.',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
+
+
+
+
+    })
 
   };
 
@@ -77,7 +115,7 @@ const AddJob = () => {
           <input
             type="text"
             name="postedBy"
-            // value={user?.displayName || ""}
+            value={user?.displayName || ""}
             readOnly
             className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
           />
@@ -149,7 +187,7 @@ const AddJob = () => {
           <input
             type="email"
             name="userEmail"
-            // value={user?.email || ""}
+            value={user?.email || ""}
             readOnly
             className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
           />

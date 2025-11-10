@@ -2,6 +2,7 @@ import React from 'react';
 import useAxios from '../hooks/useAxios';
 import { useQuery } from '@tanstack/react-query';
 import Navbar from '../components/Navbar';
+import { Link } from 'react-router';
 
 const AllJobs = () => {
 
@@ -75,9 +76,9 @@ const AllJobs = () => {
                                     {job.category}
                                 </td>
                                 <th>
-                                    {/* <button
-                                        onClick={() => handleDeleteBid(bid._id)}
-                                        className="btn btn-outline btn-xs">Remove Bid</button> */}
+                                    { <Link to={`/viewDetails/${job._id}`}
+                                        
+                                        className="btn btn-outline bg-gray-200">View Details</Link> }
                                 </th>
                             </tr>)
                         }
