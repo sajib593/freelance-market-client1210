@@ -1,6 +1,7 @@
 import React from 'react';
 import useAxios from '../hooks/useAxios';
 import { useQuery } from '@tanstack/react-query';
+import Navbar from '../components/Navbar';
 
 const AllJobs = () => {
 
@@ -22,6 +23,9 @@ const AllJobs = () => {
 
 
     return (
+        <>
+        
+        <Navbar></Navbar>
         <div>
             <h3>My Bids: {jobs.length}</h3>
             <div className="overflow-x-auto">
@@ -82,6 +86,9 @@ const AllJobs = () => {
                 </table>
             </div>
         </div>
+
+
+        </>
     );
 };
 

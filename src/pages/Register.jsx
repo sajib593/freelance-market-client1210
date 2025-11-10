@@ -83,6 +83,8 @@ const Register = () => {
 
         <title>Register</title>
 
+        
+
         <Navbar></Navbar>
         <br />
 

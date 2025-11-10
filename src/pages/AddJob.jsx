@@ -1,3 +1,4 @@
+import Navbar from "../components/Navbar";
 
 
 const AddJob = () => {
@@ -38,6 +39,12 @@ const AddJob = () => {
 
 
     return (
+
+         <>
+
+         <title>Add-Jobs</title>
+         
+          <Navbar></Navbar>
 
          <div className="max-w-2xl mx-auto mt-10 bg-white p-8 rounded-2xl shadow-lg">
       <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
@@ -157,6 +164,10 @@ const AddJob = () => {
         </button>
       </form>
     </div>
+
+
+         
+         </>
     );
 };
 

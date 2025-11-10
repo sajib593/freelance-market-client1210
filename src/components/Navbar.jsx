@@ -1,23 +1,27 @@
+import { use } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import loginImage from"./../assets/login.jpg"
 
 
 const Navbar = () => {
 
 
-        // let {user,  logOut} = use(AuthContext);
+  let {user,  logOut} = use(AuthContext);
 
 
-    // let handleLogOut =()=>{
+    let handleLogOut =()=>{
 
-    //     logOut()
-    //     .then(()=>{
-    //         Swal.fire('Logout Successful', '', 'success')
-    // } )
-    //     .catch((error)=>{
-    //         // console.log(error);
-    //         Swal.fire(error.message)
-    //     })
-    // }
+        logOut()
+        .then(()=>{
+            Swal.fire('Logout Successful', '', 'success')
+    } )
+        .catch((error)=>{
+            // console.log(error);
+            Swal.fire(error.message)
+        })
+    }
 
 
 
@@ -34,10 +38,10 @@ const Navbar = () => {
 
                 <NavLink to='/'>Home</NavLink>
 
-                {/* {!user &&  <NavLink to='/login'>Login</NavLink>
+                {!user &&  <NavLink to='/login'>Login</NavLink>
                 }
 
-                {!user && <NavLink to='/register'>Register</NavLink>} */}
+                {!user && <NavLink to='/register'>Register</NavLink>}
                 
                 <NavLink to='/allJobs'>All-Jobs</NavLink>
                 <NavLink to='/addJobs'>Add-Jobs</NavLink>
@@ -54,16 +58,16 @@ const Navbar = () => {
 
 
                 <div className="relative group login-btn flex flex-col md:flex-row gap-2 items-center">
-  {/* <img
+  <img
     className="w-10 h-10 rounded-full cursor-pointer ring-1 ring-blue-300 hover:ring-4 transition-all duration-300"
     src={user ? user.photoURL : loginImage}
     alt="User Profile"
-  /> */}
+  />
 
   {/* Tooltip */}
 
 
-  {/* {user && (
+  {user && (
     <span
       className="absolute top-12 left-1/2 -translate-x-1/2 
                  bg-gray-800 text-white text-sm font-medium 
@@ -72,7 +76,7 @@ const Navbar = () => {
     >
       {user.displayName}
     </span>
-  )} */}
+  )}
 
 
 </div>
@@ -84,10 +88,10 @@ const Navbar = () => {
 
                 <Link to='/profile' className='ml-2 mr-2 btn'>My Profile</Link>
 
-                {/* {
+                {
                     user? <button onClick={handleLogOut} className='btn btn-primary p-5'>Logout</button>  : <Link to='/login' className='btn btn-primary p-5'>Login</Link>
                 }
-                 */}
+                 
 
 
 
