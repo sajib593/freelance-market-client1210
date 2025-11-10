@@ -1,20 +1,36 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
 import Navbar from "../components/Navbar";
+import { useParams } from "react-router";
 
 
 const UpdateData = () => {
 
+    let [job, setJob] = useState(null)
 
     let {user} = useContext(AuthContext);
 
   let axiosInstance = useAxios()
   // console.log(axiosInstance);
+  let {id} = useParams();
+  // console.log(id);
 
 
-  const handleCreateJob = async (e) => {
+   useEffect(()=>{
+      axiosInstance.get(`/allJobs/${id}`)
+      .then(res =>{
+        setJob(res.data)
+        console.log(res.data);
+      })
+      .catch((err) => console.log("Error fetching job:", err));
+  },[axiosInstance, id])
+
+
+
+
+  const handleUpdateJob = async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -23,50 +39,40 @@ const UpdateData = () => {
     const summary = form.summary.value;
     const coverImage = form.coverImage.value;
     const postedBy = user?.displayName || "Anonymous";
-    const userEmail = user?.email || "unknown@email.com";
+    // const userEmail = user?.email || "unknown@email.com";
     const postedDate = new Date().toISOString();
 
-    const newJob = {
+    const updatedJob = {
       title,
       postedBy,
       category,
       summary,
       coverImage,
-      userEmail,
       postedDate,
     };
 
-    console.log(newJob);
+    // console.log(newJob);
 
-     axiosInstance.post('/allJobs', newJob)
-        .then(data =>{
-            console.log('add new job', data.data);
-    
-    
-    
-              if (data.data.insertedId) {
+
+axiosInstance
+      .put(`/allJobs/${id}`, updatedJob)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
           Swal.fire({
-            title: 'Success!',
-            text: 'Job added successfully 🎉',
-            icon: 'success',
-            confirmButtonText: 'OK'
+            title: "Updated!",
+            text: "Your job has been updated successfully.",
+            icon: "success",
+            confirmButtonText: "OK",
           });
         }
       })
-      .catch(error => {
-        console.error(error);
-        Swal.fire({
-          title: 'Error!',
-          text: 'Failed to add job. Please try again.',
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
+      .catch((err) => {
+        console.error("Error updating job:", err);
+        Swal.fire("Error", "Failed to update the job.", "error");
+      });
     
-    
-    
-    
-        })
-    
+
+   
       };
     
 
@@ -78,125 +84,112 @@ const UpdateData = () => {
          
           <Navbar></Navbar>
 
-         <div className="max-w-2xl mx-auto mt-10 bg-white p-8 rounded-2xl shadow-lg">
-      <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-        Post a New Job
-      </h2>
+        
 
-      <form onSubmit={handleCreateJob} className="space-y-4">
+        <div className="max-w-2xl mx-auto mt-10 bg-white p-8 rounded-2xl shadow-lg">
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Update the Job
+        </h2>
 
+        <form onSubmit={handleUpdateJob} className="space-y-4">
+          {/* Title */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Job Title
+            </label>
+            <input
+              type="text"
+              name="title"
+              defaultValue={job?.title}
+              required
+              className="input input-bordered w-full"
+            />
+          </div>
 
-        {/* Title */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Job Title
-          </label>
-          <input
-            type="text"
-            name="title"
-            required
-            placeholder="Enter job title"
-            className="input input-bordered w-full"
-          />
-        </div>
+          {/* Posted By */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Posted By
+            </label>
+            <input
+              type="text"
+              name="postedBy"
+              value={user?.displayName || ""}
+              readOnly
+              className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+            />
+          </div>
 
+          {/* Category */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Category
+            </label>
+            <select
+              name="category"
+              defaultValue={job?.category}
+              required
+              className="select select-bordered w-full"
+            >
+              <option value="">Select Category</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Mobile Development">Mobile Development</option>
+              <option value="Graphics Designing">Graphics Designing</option>
+              <option value="SEO">SEO</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+            </select>
+          </div>
 
-        {/* Posted By */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Posted By
-          </label>
-          <input
-            type="text"
-            name="postedBy"
-            value={user?.displayName || ""}
-            readOnly
-            className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
-          />
-        </div>
+          {/* Summary */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Job Summary
+            </label>
+            <textarea
+              name="summary"
+              defaultValue={job?.summary}
+              required
+              className="textarea textarea-bordered w-full"
+              rows="4"
+            ></textarea>
+          </div>
 
+          {/* Cover Image */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Cover Image URL
+            </label>
+            <input
+              type="text"
+              name="coverImage"
+              defaultValue={job?.coverImage}
+              required
+              className="input input-bordered w-full"
+            />
+          </div>
 
+          {/* User Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              User Email
+            </label>
+            <input
+              type="email"
+              name="userEmail"
+              value={user?.email || ""}
+              readOnly
+              className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+            />
+          </div>
 
-        {/* Category Dropdown */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Category
-          </label>
-          <select
-            name="category"
-            required
-            className="select select-bordered w-full"
+          <button
+            type="submit"
+            className="btn btn-neutral w-full mt-4 hover:bg-gray-700"
           >
-            <option value="">Select Category</option>
-            <option value="Web Development">
-              Web Development
-            </option>
-            <option value="Mobile Development">
-              Mobile Development
-            </option>
-            <option value="Graphics Designing">
-              Graphics Designing
-            </option>
-            <option value="SEO">SEO</option>
-            <option value="Digital Marketing">
-              Digital Marketing
-            </option>
-          </select>
-        </div>
-
-
-        {/* Summary */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Job Summary
-          </label>
-          <textarea
-            name="summary"
-            required
-            placeholder="Write a short description of the job..."
-            className="textarea textarea-bordered w-full"
-            rows="4"
-          ></textarea>
-        </div>
-
-        {/* Cover Image URL */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Cover Image URL
-          </label>
-          <input
-            type="text"
-            name="coverImage"
-            required
-            placeholder="Image URL"
-            className="input input-bordered w-full"
-          />
-        </div>
-
-        {/* User Email (readonly) */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            User Email
-          </label>
-          <input
-            type="email"
-            name="userEmail"
-            value={user?.email || ""}
-            readOnly
-            className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
-          />
-        </div>
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="btn btn-neutral w-full mt-4 hover:bg-gray-700"
-        >
-          Add Job
-        </button>
-      </form>
-    </div>
-
+            Update Job
+          </button>
+        </form>
+      </div>
 
          
          </>

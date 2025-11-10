@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import useAxios from "../hooks/useAxios";
 import Navbar from "../components/Navbar";
+import { Link } from "react-router";
 
 
 const JobsUpdate = () => {
@@ -48,7 +49,7 @@ const JobsUpdate = () => {
       <p className="py-6">
         {view.summary}
       </p>
-      <button className="btn btn-primary">Update</button>
+      <Link to={`/updateData/${view._id}`} className="btn btn-primary">Update</Link>
     </div>
   </div>)
             }
