@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
+import Loading from "../../pages/Loading";
 import { motion } from "motion/react"
 
 
@@ -18,7 +19,7 @@ const JobCards = () => {
     });
 
 
-    if (isLoading) return <p className="text-center">Loading...</p>;
+    if (isLoading) return <Loading></Loading>
   if (isError) return <p className="text-center text-red-500">Failed to load jobs.</p>;
 
 // console.log(jobs);

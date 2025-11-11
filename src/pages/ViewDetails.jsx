@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useAxios from "../hooks/useAxios";
+import Swal from "sweetalert2";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 
 const ViewDetails = () => {
@@ -8,7 +11,7 @@ const ViewDetails = () => {
     let [view, setView] = useState("")
 
     let {id} = useParams();
-    console.log(id);
+    // console.log(id);
 
     let axiosInstance = useAxios();
 
@@ -16,17 +19,60 @@ const ViewDetails = () => {
         axiosInstance.get(`/allJobs/${id}`)
 
         .then(data=> {
-            console.log('viewdetails', data.data);
+            // console.log('viewdetails', data.data);
             setView(data.data)
         })
 
-        console.log(view);
+        
+      },[axiosInstance, id])
+      
+      console.log(view);
+      const { title, postedBy, category, summary, coverImage, userEmail } = view;
 
-    },[axiosInstance, id])
+
+    let handlePostViewData = ()=>{
+
+      
+       axiosInstance.post('/my-accepted-tasks', { title, postedBy, category, summary, coverImage, userEmail })
+          .then(data =>{
+              console.log('add new job', data.data);
+      
+      
+      
+                if (data.data.insertedId) {
+            Swal.fire({
+              title: 'Success!',
+              text: 'Job added successfully 🎉',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          Swal.fire({
+            title: 'Error!',
+            text: 'Failed to add job. Please try again.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+      
+      
+      
+      
+          })
+
+
+    }
+
+    
+
+
+
 
     return (
         <>
-
+<Navbar></Navbar>
 
 <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row">
@@ -42,10 +88,13 @@ const ViewDetails = () => {
       <p className="py-6">
         {view.summary}
       </p>
-      <button className="btn btn-primary">Accept</button>
+      <button onClick={handlePostViewData} className="btn btn-primary">Accept</button>
     </div>
   </div>
 </div>
+
+
+<Footer></Footer>
             
         </>
     );
