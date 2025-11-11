@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import ViewDetails from "../pages/ViewDetails";
 import JobsUpdate from "../pages/JobsUpdate";
 import UpdateData from "../pages/UpdateData";
+import ErrorPage from "../pages/ErrorPage";
 
 
 
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
 
     children: [
         {

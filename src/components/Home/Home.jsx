@@ -1,3 +1,4 @@
+import Footer from "../Footer";
 import AboutSection from "./AboutSection";
 import Banner from "./Banner";
 import Categories from "./Categories";
@@ -22,6 +23,9 @@ const Home = () => {
             <br /><br />
 
             <AboutSection></AboutSection>
+            <br /><br />
+
+            <Footer></Footer>
         </div>
     );
 };
