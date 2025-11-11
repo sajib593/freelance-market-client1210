@@ -1,5 +1,6 @@
 
 import { FaArrowRightToBracket } from "react-icons/fa6";
+import { motion } from "motion/react";
 
 const categories = [
   {
@@ -57,7 +58,9 @@ const Categories = () => {
         {/* Responsive Grid: 1 col (mobile) → 2 (tablet) → 3 (desktop) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {categories.map((cat, index) => (
-            <div
+            <motion.div
+             whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
               key={index}
               className={`group relative overflow-hidden rounded-2xl border border-gray-200 
                 bg-gradient-to-br ${cat.color} transform transition-all duration-300 
@@ -88,7 +91,7 @@ const Categories = () => {
               <p className="text-white/80 text-sm">
                 200+ active jobs
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 

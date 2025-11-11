@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
+import { motion } from "motion/react"
 
 
 
@@ -32,7 +33,17 @@ const JobCards = () => {
 
             {
                 jobs.map(job =>
-                     <div key={job._id} className="group relative bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                     <motion.div
+                      key={job._id}
+
+                      initial={{ opacity: 0, scale: 2 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 1.8,
+                scale: { type: "spring", visualDuration: 0.9, bounce: 0.5 },
+            }}
+
+                       className="group relative bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden">
 
 
 
@@ -85,7 +96,7 @@ const JobCards = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
                 )
             }
 
