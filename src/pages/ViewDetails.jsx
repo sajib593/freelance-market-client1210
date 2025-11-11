@@ -35,7 +35,7 @@ const ViewDetails = () => {
       
        axiosInstance.post('/my-accepted-tasks', { title, postedBy, category, summary, coverImage, userEmail })
           .then(data =>{
-              console.log('add new job', data.data);
+              // console.log('add new job', data.data);
       
       
       
