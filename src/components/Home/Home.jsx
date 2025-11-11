@@ -1,4 +1,6 @@
+import AboutSection from "./AboutSection";
 import Banner from "./Banner";
+import Categories from "./Categories";
 import JobCards from "./JobCards";
 
 
@@ -12,6 +14,14 @@ const Home = () => {
             <br /><br />
 
             <JobCards></JobCards>
+
+            <br /><br />
+
+            <Categories></Categories>
+
+            <br /><br />
+
+            <AboutSection></AboutSection>
         </div>
     );
 };
