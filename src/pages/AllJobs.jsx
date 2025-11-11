@@ -12,7 +12,7 @@ const AllJobs = () => {
      const { data: jobs = [], isLoading, isError, refetch } = useQuery({
         queryKey: ['allJob'],
         queryFn: async () => {
-            const res = await axiosInstance.get('/allJobs');
+            const res = await axiosInstance.get('/allJobss');
             return res.data;
         }
     });
