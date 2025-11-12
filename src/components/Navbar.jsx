@@ -13,7 +13,7 @@ const Navbar = () => {
   const [theme, setTheme] = useState("light");
 
 
-   // Load theme from localStorage (so theme persists after refresh)
+   // Load theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);

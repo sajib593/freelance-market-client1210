@@ -29,7 +29,23 @@ const AllJobs = () => {
         
         <Navbar></Navbar>
         <div>
-            <h3>My Bids: {jobs.length}</h3>
+            
+
+            <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-semibold">
+            All Jobs (sorted by latest): {jobs.length}
+          </h3>
+          <button 
+            onClick={refetch} 
+            className="btn btn-sm btn-outline"
+          >
+            Refresh
+          </button>
+        </div>
+
+
+
+            
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
