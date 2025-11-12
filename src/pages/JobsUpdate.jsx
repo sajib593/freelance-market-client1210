@@ -31,33 +31,43 @@ const JobsUpdate = () => {
 
 
     return (
-        <>
+        <div className="w-11/12 mx-auto">
 
         <Navbar></Navbar>
 
-        <div>
-            {
-                jobs.map(view=>   <div className="hero-content flex-col lg:flex-row">
-    <img
-      src={view.coverImage}
-      className="max-w-sm rounded-lg shadow-2xl"
-    />
-    <div>
-      <h1 className="text-5xl font-bold">{view.title}</h1>
-      <h1 className="text-2xl font-bold">{view.category}</h1>
-      <h1 className="text-2xl font-bold">{view.postedBy}</h1>
-      <h1 className="text-2xl font-bold">{view.userEmail}</h1>
-      <p className="py-6">
-        {view.summary}
-      </p>
-      <Link to={`/updateData/${view._id}`} className="btn btn-primary">Update</Link>
-    </div>
-  </div>)
-            }
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
+    {jobs.map((view) => (
+      <div
+        key={view._id}
+        className="flex flex-col md:flex-row items-center bg-base-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300"
+      >
+        <img
+          src={view.coverImage}
+          alt={view.title}
+          className="w-full md:w-1/2 rounded-xl object-cover"
+        />
+
+        <div className="md:ml-6 mt-4 md:mt-0 text-center md:text-left space-y-2">
+          <h1 className="text-3xl font-bold">{view.title}</h1>
+          <h2 className="text-xl font-semibold text-gray-600">{view.category}</h2>
+          <h3 className="text-lg font-medium text-gray-500">Posted By: {view.postedBy}</h3>
+          <p className="text-sm text-gray-500">Email: {view.userEmail}</p>
+
+          <p className="py-3 text-gray-700">{view.summary}</p>
+
+          <Link
+            to={`/updateData/${view._id}`}
+            className="btn btn-primary mt-3"
+          >
+            Update
+          </Link>
         </div>
+      </div>
+    ))}
+  </div>
 
             <Footer></Footer>
-        </>
+        </div>
     );
 };
 

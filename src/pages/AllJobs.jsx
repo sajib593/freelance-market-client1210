@@ -25,93 +25,84 @@ const AllJobs = () => {
 
 
     return (
-        <>
-        
-        <Navbar></Navbar>
-        <br /><br />
-        <div>
-            
+        <div className="w-11/12 mx-auto my-10">
+  <Navbar />
 
-            <div className="flex justify-between items-center mb-4">
-                    <div></div>
-          <h3 className="text-2xl font-bold">
-            All Jobs (sorted by latest): <span className='text-4xl text-cyan-600'>{jobs.length}</span>
-          </h3>
-          <button 
-            onClick={refetch} 
-            className="btn btn-sm btn-primary p-5"
+  <h2 className="text-3xl font-bold text-center mb-6 text-primary">
+    All Available Jobs
+  </h2>
+
+  <div className="overflow-x-auto rounded-xl shadow-xl border border-gray-200 bg-base-100">
+    <table className="table table-zebra w-full text-sm sm:text-base">
+      {/* Table Head */}
+      <thead className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs sm:text-sm md:text-base">
+        <tr>
+          <th>#</th>
+          <th>Posted-By</th>
+          <th>Title</th>
+          <th>User-Email</th>
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      {/* Table Body */}
+      <tbody>
+        {jobs.map((job, index) => (
+          <tr
+            key={job._id}
+            className="hover:bg-blue-50 transition-all duration-300 border-b border-gray-200"
           >
-            Refresh
-          </button>
-        </div>
+            <td className="font-semibold text-gray-700">{index + 1}</td>
 
-                <br />
+            {/* Posted By */}
+            <td>
+              <div className="flex items-center gap-3">
+                <div className="avatar hidden sm:block">
+                  <div className="mask mask-squircle h-10 w-10 sm:h-12 sm:w-12">
+                    <img src={job.coverImage} alt={job.title} />
+                  </div>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-800 text-sm sm:text-base">
+                    {job.postedBy}
+                  </div>
+                </div>
+              </div>
+            </td>
 
-            
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Posted-By</th>
-                            <th>Title</th>
-                            <th>User-Email</th>
-                            <th>Category</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            {/* Title */}
+            <td className="font-medium text-gray-700">{job.title}</td>
 
+            {/* Email */}
+            <td className="text-gray-600 truncate max-w-[120px] sm:max-w-none">
+              {job.userEmail}
+            </td>
 
-                        
+            {/* Category */}
+            <td>
+              <span className="badge badge-outline badge-primary text-xs sm:text-sm">
+                {job.category}
+              </span>
+            </td>
 
+            {/* Button */}
+            <th>
+              <Link
+                to={`/viewDetails/${job._id}`}
+                className="btn btn-xs sm:btn-sm md:btn-md btn-primary hover:scale-105 transition-transform duration-300"
+              >
+                View Details
+              </Link>
+            </th>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 
-
-                        {
-                            jobs.map((job, index) => <tr className='bg-amber-100' key={job._id}>
-                                <td>{index + 1}</td>
-                                <td>
-                                    <div className="flex items-center gap-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle h-12 w-12">
-                                                <img
-                                                    src={job.coverImage}
-                                                    alt={job.title} />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="font-bold">{job.postedBy}</div>
-                                            
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {job.title}
-                                </td>
-                                <td>{job.userEmail}</td>
-                                <td>
-                                    
-                                    {job.category}
-                                </td>
-                                <th>
-                                    { <Link to={`/viewDetails/${job._id}`}
-                                        
-                                        className="btn btn-outline bg-gray-200">View Details</Link> }
-                                </th>
-                            </tr>)
-                        }
-                    </tbody>
-
-                </table>
-            </div>
-        </div>
-
-
-        <Footer></Footer>
-
-
-        </>
+  <Footer />
+</div>
     );
 };
 
