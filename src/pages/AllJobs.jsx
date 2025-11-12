@@ -28,22 +28,24 @@ const AllJobs = () => {
         <>
         
         <Navbar></Navbar>
+        <br /><br />
         <div>
             
 
             <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-semibold">
-            All Jobs (sorted by latest): {jobs.length}
+                    <div></div>
+          <h3 className="text-2xl font-bold">
+            All Jobs (sorted by latest): <span className='text-4xl text-cyan-600'>{jobs.length}</span>
           </h3>
           <button 
             onClick={refetch} 
-            className="btn btn-sm btn-outline"
+            className="btn btn-sm btn-primary p-5"
           >
             Refresh
           </button>
         </div>
 
-
+                <br />
 
             
             <div className="overflow-x-auto">
@@ -55,7 +57,7 @@ const AllJobs = () => {
                             <th>Posted-By</th>
                             <th>Title</th>
                             <th>User-Email</th>
-                            <th>Status</th>
+                            <th>Category</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -67,7 +69,7 @@ const AllJobs = () => {
 
 
                         {
-                            jobs.map((job, index) => <tr key={job._id}>
+                            jobs.map((job, index) => <tr className='bg-amber-100' key={job._id}>
                                 <td>{index + 1}</td>
                                 <td>
                                     <div className="flex items-center gap-3">
