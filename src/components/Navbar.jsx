@@ -34,7 +34,7 @@ const Navbar = () => {
                 
             </div>
 
-            <div className="nav flex flex-col md:flex-row gap-2 text-accent">
+            <div className="nav flex flex-col md:flex-row gap-3 text-accent font-bold">
 
                 <NavLink to='/'>Home</NavLink>
 
@@ -87,7 +87,7 @@ const Navbar = () => {
                 {/* <img className='w-10 rounded-full' src={login}alt="" /> */}
 
 
-                <Link to='/profile' className='ml-2 mr-2 btn'>My Profile</Link>
+                
 
                 {
                     user? <button onClick={handleLogOut} className='btn btn-primary p-5'>Logout</button>  : <Link to='/login' className='btn btn-primary p-5'>Login</Link>

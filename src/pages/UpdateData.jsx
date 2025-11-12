@@ -4,6 +4,7 @@ import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router";
+import Footer from "../components/Footer";
 
 
 const UpdateData = () => {
@@ -191,7 +192,7 @@ axiosInstance
         </form>
       </div>
 
-         
+         <Footer></Footer>
          </>
     );
 };

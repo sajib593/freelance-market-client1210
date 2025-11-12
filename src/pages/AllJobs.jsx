@@ -3,6 +3,7 @@ import useAxios from '../hooks/useAxios';
 import { useQuery } from '@tanstack/react-query';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router';
+import Footer from '../components/Footer';
 
 const AllJobs = () => {
 
@@ -87,6 +88,9 @@ const AllJobs = () => {
                 </table>
             </div>
         </div>
+
+
+        <Footer></Footer>
 
 
         </>

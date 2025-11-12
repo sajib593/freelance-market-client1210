@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import { Link } from "react-router";
 
 const Banner = () => {
     return (
@@ -34,6 +35,9 @@ const Banner = () => {
         {/* Two Buttons */}
         <div 
         className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          <Link to='/allJobs'>
+          
           <motion.button
 
            initial={{ y: 20 }}
@@ -45,8 +49,15 @@ const Banner = () => {
             Search Jobs
           </motion.button>
 
+          </Link>
+          
 
-          <motion.button 
+          
+          
+        <Link to='/addJobs'>
+      
+       <motion.button 
+        
           
            initial={{ y: 20 }}
   animate={{ y: 5 }}
@@ -54,8 +65,12 @@ const Banner = () => {
   whileTap={{ scale: 0.9 }}
 
           className="bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-8 rounded-lg transition duration-200 shadow-md">
-            Post a Job
+            
+           Post a Job
           </motion.button>
+
+      </Link>
+         
         </div>
       </motion.div>
     </motion.section>

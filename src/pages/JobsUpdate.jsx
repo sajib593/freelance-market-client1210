@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import useAxios from "../hooks/useAxios";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router";
+import Footer from "../components/Footer";
 
 
 const JobsUpdate = () => {
@@ -55,7 +56,7 @@ const JobsUpdate = () => {
             }
         </div>
 
-
+            <Footer></Footer>
         </>
     );
 };

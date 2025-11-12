@@ -1,3 +1,37 @@
+# 🌐 Freelance Job Market Platform
+
+A modern freelance job marketplace where clients can post projects and freelancers can browse, apply, and manage their accepted tasks — all in one place.
+
+## 🚀 Live Site
+[🔗 Visit the Live Website](live)
+
+---
+
+## ✨ Features
+
+- 🧑‍💻 **Job Posting System:** Clients can easily post new freelance jobs with title, category, description, and image.  
+- 🔍 **Browse & Filter Jobs:** Freelancers can explore all available projects, filtered by categories and keywords.  
+- 💼 **Accept & Manage Tasks:** Logged-in freelancers can accept jobs and view them in their personalized dashboard.  
+- 🔐 **User Authentication:** Secure login and registration system powered by Firebase Authentication.  
+- 🗑️ **Task Management:** Freelancers can delete accepted jobs, with real-time updates and confirmation via SweetAlert2.  
+- ⚡ **Responsive & Fast:** Built with React, Tailwind CSS, and React Query for smooth and responsive performance.  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React JS (Vite), Tailwind CSS  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB Atlas  
+- **Authentication:** Firebase  
+- **Others:** Axios, React Query, SweetAlert2  
+
+
+
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
+import Footer from "../components/Footer";
 
 
 const AddJob = () => {
@@ -204,7 +205,7 @@ const AddJob = () => {
     </div>
 
 
-         
+         <Footer></Footer>
          </>
     );
 };
