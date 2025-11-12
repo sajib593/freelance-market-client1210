@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
@@ -9,6 +9,26 @@ const Navbar = () => {
 
 
   let {user,  logOut} = use(AuthContext);
+
+  const [theme, setTheme] = useState("light");
+
+
+   // Load theme from localStorage (so theme persists after refresh)
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }, []);
+
+  // Handle toggle switch
+  const handleToggle = (event) => {
+    const newTheme = event.target.checked ? "dark" : "light";
+    setTheme(newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+
 
 
     let handleLogOut =()=>{
@@ -51,11 +71,32 @@ const Navbar = () => {
 
             </div>
 
+              
             <div className="login-btn flex flex-col md:flex-row gap-1 items-center">
                 {/* <img className='w-10 rounded-full' 
                 src={`${user? user.photoURL : loginImage}`} alt="" 
                 title={user? user.displayName : ""}
                 /> */}
+
+
+
+
+
+
+ {/* Theme Toggle */}
+        <label className="flex items-center gap-2 cursor-pointer">
+          
+          <input
+            type="checkbox"
+            className="toggle theme-controller"
+            onChange={handleToggle}
+            checked={theme === "dark"}
+          />
+          
+        </label>
+
+
+
 
 
                 <div className="relative group login-btn flex flex-col md:flex-row gap-2 items-center">
@@ -64,6 +105,8 @@ const Navbar = () => {
     src={user ? user.photoURL : loginImage}
     alt="User Profile"
   />
+
+  
 
   {/* Tooltip */}
 
@@ -81,6 +124,11 @@ const Navbar = () => {
 
 
 </div>
+
+
+
+    
+
                 
 
 
