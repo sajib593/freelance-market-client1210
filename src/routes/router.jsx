@@ -10,6 +10,7 @@ import JobsUpdate from "../pages/JobsUpdate";
 import UpdateData from "../pages/UpdateData";
 import ErrorPage from "../pages/ErrorPage";
 import AcceptedTask from "../pages/AcceptedTask";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 
 
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
   
   {
     path: "/addJobs",
-    element: <AddJob></AddJob>
+    element: <PrivateRoute><AddJob></AddJob></PrivateRoute>
   },
 
   {
@@ -56,20 +57,20 @@ const router = createBrowserRouter([
 
   {
     path: '/viewDetails/:id',
-    element: <ViewDetails></ViewDetails>
+    element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>
   },
   {
     path: '/jobsUpdate',
-    element: <JobsUpdate></JobsUpdate>
+    element: <PrivateRoute><JobsUpdate></JobsUpdate></PrivateRoute>
   },
   {
     path: '/updateData/:id',
-    element: <UpdateData></UpdateData>
+    element: <PrivateRoute><UpdateData></UpdateData></PrivateRoute>
   },
 
   {
     path: '/acceptedTasks',
-    element: <AcceptedTask></AcceptedTask>
+    element: <PrivateRoute><AcceptedTask></AcceptedTask></PrivateRoute>
   }
  
 ]);

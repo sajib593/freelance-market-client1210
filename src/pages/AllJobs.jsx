@@ -26,11 +26,14 @@ const AllJobs = () => {
 
     return (
         <div className="w-11/12 mx-auto my-10">
+
   <Navbar />
+  <br />
 
   <h2 className="text-3xl font-bold text-center mb-6 text-primary">
     All Available Jobs
   </h2>
+  <br />
 
   <div className="overflow-x-auto rounded-xl shadow-xl border border-gray-200 bg-base-100">
     <table className="table table-zebra w-full text-sm sm:text-base">

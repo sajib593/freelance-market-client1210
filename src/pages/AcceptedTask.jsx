@@ -72,7 +72,7 @@ const AcceptedTask = () => {
 
     return (
 
-        <>
+        <div className='w-11/12 mx-auto'>
 
         <Navbar></Navbar>
 
@@ -125,7 +125,7 @@ const AcceptedTask = () => {
 
         <Footer></Footer>
 
-        </>
+        </div>
     );
 };
 
