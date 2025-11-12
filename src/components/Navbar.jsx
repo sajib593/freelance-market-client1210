@@ -46,7 +46,7 @@ const Navbar = () => {
                 <NavLink to='/allJobs'>All-Jobs</NavLink>
                 <NavLink to='/addJobs'>Add-Jobs</NavLink>
                 <NavLink to='/acceptedTasks'>Accepted-Tasks</NavLink>
-                <NavLink to='/jobsUpdate'>Posted-Job</NavLink>
+                <NavLink to='/jobsUpdate'>Update-Job</NavLink>
 
 
             </div>

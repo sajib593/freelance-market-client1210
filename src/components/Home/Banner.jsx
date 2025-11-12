@@ -66,7 +66,7 @@ const Banner = () => {
 
           className="bg-white hover:bg-gray-100 text-gray-800 font-medium py-3 px-8 rounded-lg transition duration-200 shadow-md">
             
-           Post a Job
+           Create a Job
           </motion.button>
 
       </Link>

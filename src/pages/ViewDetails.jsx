@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useAxios from "../hooks/useAxios";
 import Swal from "sweetalert2";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const ViewDetails = () => {
@@ -14,6 +15,7 @@ const ViewDetails = () => {
     // console.log(id);
 
     let axiosInstance = useAxios();
+    let {user} = useContext(AuthContext)
 
     useEffect(()=>{
         axiosInstance.get(`/allJobs/${id}`)
@@ -31,6 +33,16 @@ const ViewDetails = () => {
 
 
     let handlePostViewData = ()=>{
+
+      if (userEmail === user?.email) {
+      Swal.fire({
+        icon: "error",
+        title: "Not Allowed",
+        text: "You cannot accept your own posted job.",
+      });
+      return;
+    }
+
 
       
        axiosInstance.post('/my-accepted-tasks', { title, postedBy, category, summary, coverImage, userEmail })

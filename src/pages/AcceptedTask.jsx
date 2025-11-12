@@ -10,17 +10,26 @@ const AcceptedTask = () => {
 
 
     let axiosInstance = useAxios()
-    let {user} = useContext(AuthContext)
+    // let {user} = useContext(AuthContext)
 
 
 
      const { data: acceptedTasks = [], isLoading, isError, refetch } = useQuery({
-        queryKey: ['acceptTask', user?.email],
+        queryKey: ['acceptTask'],
         queryFn: async () => {
-            const res = await axiosInstance.get(`/my-accepted-tasks-email?email=${user?.email}`);
+            const res = await axiosInstance.get('/my-accepted-tasks-email');
             return res.data;
         }
     });
+
+
+    //   const { data: acceptedTasks = [], isLoading, isError, refetch } = useQuery({
+    //     queryKey: ['acceptTask', user?.email],
+    //     queryFn: async () => {
+    //         const res = await axiosInstance.get(`/my-accepted-tasks-email?email=${user?.email}`);
+    //         return res.data;
+    //     }
+    // });
 
     console.log(acceptedTasks);
 
@@ -68,7 +77,7 @@ const AcceptedTask = () => {
         <Navbar></Navbar>
 
       <div className="min-h-screen bg-base-200 py-10">
-        <div className="flex flex-col items-center gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
           {acceptedTasks.length > 0 ? (
             acceptedTasks.map((view) => (
               <div
@@ -93,6 +102,16 @@ const AcceptedTask = () => {
                   >
                     Delete
                   </button>
+
+
+                  <button
+                    onClick={() => handleDelete(view._id)}
+                    className="btn btn-primary ml-5"
+                  >
+                    Cancel
+                  </button>
+
+
                 </div>
               </div>
             ))
