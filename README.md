@@ -3,7 +3,7 @@
 A modern freelance job marketplace where clients can post projects and freelancers can browse, apply, and manage their accepted tasks — all in one place.
 
 ## 🚀 Live Site
-[🔗 Visit the Live Website](live)
+[🔗 Visit the Live Website]("https://deluxe-zabaione-936959.netlify.app ")
 
 ---
 
