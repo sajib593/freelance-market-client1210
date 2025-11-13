@@ -20,7 +20,7 @@ const JobsUpdate = () => {
       axiosInstance
         .get(`/jobsByEmail?email=${user.email}`)
         .then((res) => {
-          console.log("Filtered jobs:", res.data);
+          // console.log("Filtered jobs:", res.data);
           setJobs(res.data); // ✅ save data in state
         })
         .catch((err) => {

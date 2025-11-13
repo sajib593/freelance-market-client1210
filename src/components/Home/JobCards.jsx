@@ -10,7 +10,7 @@ const JobCards = () => {
 
     let axiosInstance = useAxios()
 
-     const { data: jobs = [], isLoading, isError, refetch } = useQuery({
+     const { data: jobs = [], isLoading, isError } = useQuery({
         queryKey: ['allJobs'],
         queryFn: async () => {
             const res = await axiosInstance.get('/allJobs');

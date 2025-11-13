@@ -23,9 +23,9 @@ const UpdateData = () => {
       axiosInstance.get(`/allJobs/${id}`)
       .then(res =>{
         setJob(res.data)
-        console.log(res.data);
+        // console.log(res.data);
       })
-      .catch((err) => console.log("Error fetching job:", err));
+      
   },[axiosInstance, id])
 
 

@@ -4,13 +4,14 @@ import { useQuery } from '@tanstack/react-query';
 import Navbar from '../components/Navbar';
 import { Link } from 'react-router';
 import Footer from '../components/Footer';
+import Loading from './Loading';
 
 const AllJobs = () => {
 
 
     let axiosInstance = useAxios()
 
-     const { data: jobs = [], isLoading, isError, refetch } = useQuery({
+     const { data: jobs = [], isLoading, isError } = useQuery({
         queryKey: ['allJob'],
         queryFn: async () => {
             const res = await axiosInstance.get('/allJobss');
@@ -19,7 +20,7 @@ const AllJobs = () => {
     });
 
 
-    if (isLoading) return <p className="text-center">Loading...</p>;
+    if (isLoading) return <Loading></Loading>;
   if (isError) return <p className="text-center text-red-500">Failed to load jobs.</p>;
 
 

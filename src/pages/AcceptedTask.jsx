@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+
 import useAxios from '../hooks/useAxios';
 import { AuthContext } from '../Provider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Swal from 'sweetalert2';
+import Loading from './Loading';
 
 const AcceptedTask = () => {
 
@@ -31,7 +32,7 @@ const AcceptedTask = () => {
     //     }
     // });
 
-    console.log(acceptedTasks);
+    // console.log(acceptedTasks);
 
 
 
@@ -66,7 +67,7 @@ const AcceptedTask = () => {
     }
   };
 
-    if (isLoading) return <p className="text-center">Loading...</p>;
+    if (isLoading) return <Loading></Loading>;
   if (isError) return <p className="text-center text-red-500">Failed to load jobs.</p>;
 
 

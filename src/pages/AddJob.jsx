@@ -36,7 +36,7 @@ const AddJob = () => {
       postedDate,
     };
 
-    console.log(newJob);
+    // console.log(newJob);
 
     // axiosSecure.post('/products', newProduct)
     // .then((data) => {
@@ -46,7 +46,7 @@ const AddJob = () => {
 
     axiosInstance.post('/allJobs', newJob)
     .then(data =>{
-        console.log('add new job', data.data);
+        // console.log('add new job', data.data);
 
 
 
