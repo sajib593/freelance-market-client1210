@@ -46,8 +46,11 @@ const Navbar = () => {
 
 
     return (
-          <div className='sticky top-0 z-50 bg-gradient-to-r from-sky-300 via-blue-300 to-indigo-400 dark:from-black dark:via-slate-900 dark:to-black-blur-lg-b border-white/20 dark:border-gray-700 shadow-lg dark:shadow-2xl
-      text-white flex flex-col md:flex-row justify-between items-center p-4 gap-3 '>
+          <div className='sticky top-0 z-50
+      bg-gradient-to-r from-sky-300 via-blue-300 to-indigo-400
+      dark:from-slate-900 dark:via-slate-800 dark:to-slate-900
+      border-b border-white/30 dark:border-slate-700
+      shadow-lg dark:shadow-black/40 flex flex-col md:flex-row justify-between items-center p-4 gap-3 text-slate-900 dark:text-slate-100 rounded-2xl'>
             <div className="">
                 {/* {user && user.email} */}
 
@@ -55,9 +58,9 @@ const Navbar = () => {
                 
             </div>
 
-            <div className="nav flex flex-col md:flex-row gap-3 text-accent font-bold">
+            <div className="nav flex flex-col md:flex-row gap-3 font-semibold text-slate-800 dark:text-slate-200">
 
-                <NavLink to='/'>Home</NavLink>
+                <NavLink  to='/'>Home</NavLink>
 
                 {!user &&  <NavLink to='/login'>Login</NavLink>
                 }
