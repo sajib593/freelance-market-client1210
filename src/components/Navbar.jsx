@@ -46,7 +46,8 @@ const Navbar = () => {
 
 
     return (
-          <div className='flex flex-col md:flex-row justify-between items-center bg-gray-200 p-3 gap-2'>
+          <div className='sticky top-0 z-50 bg-gradient-to-r from-sky-300 via-blue-300 to-indigo-400 dark:from-black dark:via-slate-900 dark:to-black-blur-lg-b border-white/20 dark:border-gray-700 shadow-lg dark:shadow-2xl
+      text-white flex flex-col md:flex-row justify-between items-center p-4 gap-3 '>
             <div className="">
                 {/* {user && user.email} */}
 
@@ -84,7 +85,8 @@ const Navbar = () => {
 
 
  {/* Theme Toggle */}
-        <label className="flex items-center gap-2 cursor-pointer">
+        <label className="bg-white/20 dark:bg-white/10
+          px-3 py-2 rounded-full shadow-inner cursor-pointer">
           
           <input
             type="checkbox"
